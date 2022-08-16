@@ -1,7 +1,12 @@
 <template>
   <Box>
+<<<<<<< Updated upstream
     <div class="columns">
       <div class="column is-7">
+=======
+    <div class="columns clicavel" @click="tarefaClicada">
+      <div class="column is-4">
+>>>>>>> Stashed changes
         {{ tarefa.descricao || "Tarefa sem descrição" }}
       </div>
       <div class="column">
@@ -19,6 +24,7 @@ import ITarefa from "@/Interfaces/ITarefa";
 
 export default defineComponent({
   name: "TarefaVue",
+  emits: ["aoTarefaClicada"],
   components: {
     Cronometro,
     Box,
@@ -29,5 +35,17 @@ export default defineComponent({
       required: true,
     },
   },
+
+  methods: {
+    tarefaClicada(): void {
+      this.$emit("aoTarefaClicada", this.tarefa);
+    },
+  },
 });
 </script>
+
+<style scoped>
+.clicavel {
+  cursor: pointer;
+}
+</style>
